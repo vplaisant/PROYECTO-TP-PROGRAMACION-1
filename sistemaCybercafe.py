@@ -58,9 +58,7 @@ for i in range(3):
     comprobante += 1
 
 print("Lista de ganancias por operación:", lista_ganancias)
-total_recaudado = 0
-for ganancia in ganancias_por_servicio:
-    total_recaudado += ganancia
+total_recaudado = sum(ganancias_por_servicio)
 
 print("Total recaudado:", total_recaudado)
 cc.ordenar_servicios_por_gasto(ganancias_por_servicio)
