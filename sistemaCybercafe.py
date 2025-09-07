@@ -8,7 +8,6 @@ lista_horas = [1, 2, 3]
 lista_cafe = [1, 2, 3]
 ganancias_por_servicio = [0, 0, 0]
 lista_ganancias = []
-M = [[0]*5 for i in range(5)]
 
 comprobante = 1
 print("------------------------------------------------------------")
@@ -18,6 +17,8 @@ for i in range(3):
     cliente.append(nombre)
     nickname = input("Ingrese su nickname: ")
     cliente.append(nickname)
+    turno = input("Ingrese turno: ").upper()
+    turno = cc.turno_validar(turno)
     show = input("Ingrese con que quiere jugar PC o CONSOLA: ").upper()
     show = cc.show_validar(show)
     cliente.append(show)
@@ -30,7 +31,7 @@ for i in range(3):
     else:
         comida, comida_precio = "NO", 0
     cliente.append(comida)
-    cuenta = cc.calcular_precio_final(tiempo, comida_precio)
+    cuenta = cc.calcular_precio_final(tiempo, comida_precio, turno)
     descuento, cuenta_final = cc.descuento_validar(cuenta)
     cliente.append(cuenta_final)
     lista_ganancias.append(cuenta_final)
