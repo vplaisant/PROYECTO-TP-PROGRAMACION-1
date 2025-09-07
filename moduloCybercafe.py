@@ -65,6 +65,7 @@ def calcular_precio_final(tiempo, comida_precio):
         precio_hora = 5550
         total = precio_hora + comida_precio
     return total
+    
 def ordenar_servicios_por_gasto(ganancias_por_servicio):
     matriz = []
     for i in range(len(ganancias_por_servicio)):
@@ -76,3 +77,23 @@ def ordenar_servicios_por_gasto(ganancias_por_servicio):
     print("Matriz de servicios ordenados por gasto (nro. de servicio, gasto):")
     for fila in matriz:
         print(fila)
+
+def ocuparMaquina(M):
+    pmaq = int(input("Ingrese fila: "))
+    maq = int(input("Ingrese maquina: "))
+    while M[pmaq-1][maq-1] == 1:
+        print("La máquina ya se encuentra ocupada. Seleccione otra máquina a ocupar.")
+        pmaq = int(input("Ingrese fila: "))
+        maq = int(input("Ingrese maquina: "))
+    M[pmaq-1][maq-1] = 1
+    return M
+        
+def liberarMaquina(M):
+    pmaq = int(input("Ingrese fila: "))
+    maq = int(input("Ingrese maquina: "))
+    while M[pmaq-1][maq-1] == 0:
+        print("La máquina no está ocupada. Seleccione una maquina ocupada para liberarla.")
+        pmaq = int(input("Ingrese fila: "))
+        maq = int(input("Ingrese maquina: "))
+    M[pmaq-1][maq-1] = 0
+    return M
