@@ -46,10 +46,10 @@ def seleccionar_cafeteria(lista_cafe):
 
 def descuento_validar(cuenta):
     descuento = 0
-    if cuenta >= 8000 and cuenta < 10000:
+    if cuenta >= 8000 and cuenta < 11500:
         descuento = 2
         cuenta = cuenta - (cuenta * 0.02)
-    elif cuenta >= 10000:
+    elif cuenta >= 11500:
         descuento = 4
         cuenta = cuenta - (cuenta * 0.04)
     return descuento, cuenta
