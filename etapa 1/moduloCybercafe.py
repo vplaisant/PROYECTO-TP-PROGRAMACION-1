@@ -71,3 +71,23 @@ def turno_validar(turno):
         print("Turno inválido, ingrese MAÑANA, TARDE o NOCHE")
         turno = input("Ingrese turno: ").upper()
     return turno
+
+def ocuparMaquina(M):
+    pmaq = int(input("Ingrese fila: "))
+    maq = int(input("Ingrese maquina: "))
+    while M[pmaq-1][maq-1] == 1:
+        print("La máquina ya se encuentra ocupada. Seleccione otra máquina a ocupar.")
+        pmaq = int(input("Ingrese fila: "))
+        maq = int(input("Ingrese maquina: "))
+    M[pmaq-1][maq-1] = 1
+    return M
+        
+def liberarMaquina(M):
+    pmaq = int(input("Ingrese fila: "))
+    maq = int(input("Ingrese maquina: "))
+    while M[pmaq-1][maq-1] == 0:
+        print("La máquina no está ocupada. Seleccione una maquina ocupada para liberarla.")
+        pmaq = int(input("Ingrese fila: "))
+        maq = int(input("Ingrese maquina: "))
+    M[pmaq-1][maq-1] = 0
+    return M
