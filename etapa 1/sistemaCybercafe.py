@@ -58,11 +58,6 @@ def main():
         print(f"Comida: {cliente[4]}")
         print(f"Cuenta total: ${cuenta_final}")
         print(f"Descuento aplicado: {descuento}%")
-
-        print("¿Desea liberar una máquina? (SI/NO)")
-        resp = input().upper()
-        if resp == "SI":
-            M = cc.liberarMaquina(M)
         print("------------------------------------------------------------")
         comprobante += 1
 
