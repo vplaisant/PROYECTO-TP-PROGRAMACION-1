@@ -9,7 +9,9 @@ def main():
     lista_cafe = [1, 2, 3]
     ganancias_por_servicio = [0, 0, 0]
     lista_ganancias = []
-    M = [[0]*5 for i in range(5)]
+    M_MAÑANA = [[0]*5 for i in range(5)]
+    M_TARDE = [[0]*5 for i in range(5)]
+    M_NOCHE = [[0]*5 for i in range(5)]
 
     comprobante = 1
     continuar = 0
@@ -26,7 +28,7 @@ def main():
         show = cc.show_validar(show)
         cliente.append(show)
         print(f"Seleccione una máquina para {show}:")
-        M = cc.ocuparMaquina(M)
+        M = cc.ocuparMaquina(M_MAÑANA if turno == "MAÑANA" else M_TARDE if turno == "TARDE" else M_NOCHE)
         tiempo = cc.seleccionar_horas(lista_horas)
         cliente.append(tiempo)
         desea_comida = input("Desea comida? SI o NO: ").upper()
