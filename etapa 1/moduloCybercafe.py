@@ -86,8 +86,8 @@ def ocuparMaquina(M):
     pmaq = int(input("Ingrese fila: "))
     maq = int(input("Ingrese maquina: "))
     while M[pmaq-1][maq-1] == 0:
-        print("La máquina no está ocupada. Seleccione una maquina ocupada para liberarla.")"""
+        print("La máquina no está ocupada. Seleccione una maquina ocupada para liberarla.")
         pmaq = int(input("Ingrese fila: "))
         maq = int(input("Ingrese maquina: "))
     M[pmaq-1][maq-1] = 0
-    return M
+    return M"""
