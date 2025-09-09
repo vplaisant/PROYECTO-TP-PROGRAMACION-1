@@ -9,6 +9,7 @@ def main():
     lista_cafe = [1, 2, 3]
     ganancias_por_servicio = [0, 0, 0]
     lista_ganancias = []
+    M = [[0]*5 for i in range(5)]
 
     comprobante = 1
     print("------------------------------------------------------------")
