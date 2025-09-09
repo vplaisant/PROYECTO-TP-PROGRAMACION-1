@@ -58,18 +58,13 @@ def calcular_precio_final(tiempo, comida_precio, turno):
     total = ({1:2500, 2:4000, 3:5550}[tiempo] * (lambda turno: 1.0 if turno=="MAÑANA" else 1.25 if turno=="TARDE" else 1.50)(turno)) + comida_precio
     return total
 
-
-def ordenar_servicios_por_gasto(ganancias_por_servicio):
-    matriz = []
-    for i in range(len(ganancias_por_servicio)):
-        matriz.append([i+1, ganancias_por_servicio[i]])
-    for i in range(len(matriz)):
-        for j in range(i+1, len(matriz)):
-            if matriz[i][1] > matriz[j][1]:
-                matriz[i], matriz[j] = matriz[j], matriz[i]
-    print("Matriz de servicios ordenados por gasto (nro. de servicio, gasto):")
-    for fila in matriz:
-        print(fila)
+def ordenar_servicios_por_gasto(ganancias_por_servicio, etiquetas=("PC","CONSOLA","COMIDA")):
+    matriz = [(etiquetas[i], gasto) for i, gasto in enumerate(ganancias_por_servicio)]
+    matriz_ordenada = sorted(matriz, key=lambda x: x[1], reverse=True)
+    print("Servicios ordenados por gasto (servicio, gasto):")
+    for etq, gasto in matriz_ordenada:
+        print(f"- {etq}: ${gasto:,.0f}".replace(",", "."))
+    return matriz_ordenada
         
 def turno_validar(turno):
     while turno not in ["MAÑANA", "TARDE", "NOCHE"]:
