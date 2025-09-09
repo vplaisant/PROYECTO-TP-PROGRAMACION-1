@@ -14,7 +14,7 @@ def main():
     comprobante = 1
     continuar = 0
     print("------------------------------------------------------------")
-    while continuar != 1:
+    while continuar != -1:
         cliente = []
         nombre = input("Ingrese su nombre: ").title()
         cliente.append(nombre)
@@ -61,7 +61,7 @@ def main():
         print(f"Descuento aplicado: {descuento}%")
         print("------------------------------------------------------------")
         comprobante += 1
-        continuar = int(input("cargar otra factura?: "))
+        continuar = int(input("Finalizar ingresar -1 o continuar ingrese otro numero: "))
 
     print("Lista de ganancias por operación:", lista_ganancias)
     total_recaudado = sum(ganancias_por_servicio)
