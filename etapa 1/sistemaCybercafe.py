@@ -61,12 +61,12 @@ def main():
         print(f"Descuento aplicado: {descuento}%")
         print("------------------------------------------------------------")
         comprobante += 1
-        continuar = int(input("Finalizar ingresar -1 o continuar ingrese otro numero: "))
+        continuar = int(input("Ingrese cualquier numero para cargar otra factura o -1 para terminar: "))
 
-    print("Lista de ganancias por operación:", lista_ganancias)
+    print("\nLista de ganancias por operación:", lista_ganancias)
     total_recaudado = sum(ganancias_por_servicio)
 
-    print("Total recaudado:", total_recaudado)
+    print("\nTotal recaudado:", total_recaudado)
     cc.ordenar_servicios_por_gasto(ganancias_por_servicio)
     
 if __name__ == "__main__":
