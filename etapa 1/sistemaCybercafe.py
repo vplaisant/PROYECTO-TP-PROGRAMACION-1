@@ -12,8 +12,9 @@ def main():
     M = [[0]*5 for i in range(5)]
 
     comprobante = 1
+    continuar = 0
     print("------------------------------------------------------------")
-    for i in range(3):
+    while continuar != 1:
         cliente = []
         nombre = input("Ingrese su nombre: ").title()
         cliente.append(nombre)
@@ -60,6 +61,7 @@ def main():
         print(f"Descuento aplicado: {descuento}%")
         print("------------------------------------------------------------")
         comprobante += 1
+        continuar = int(input("cargar otra factura?: "))
 
     print("Lista de ganancias por operación:", lista_ganancias)
     total_recaudado = sum(ganancias_por_servicio)
