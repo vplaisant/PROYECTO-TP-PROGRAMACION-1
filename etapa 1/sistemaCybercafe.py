@@ -24,6 +24,8 @@ def main():
         show = input("Ingrese con que quiere jugar PC o CONSOLA: ").upper()
         show = cc.show_validar(show)
         cliente.append(show)
+        print(f"Seleccione una máquina para {show}:")
+        M = cc.ocuparMaquina(M)
         tiempo = cc.seleccionar_horas(lista_horas)
         cliente.append(tiempo)
         desea_comida = input("Desea comida? SI o NO: ").upper()
@@ -56,6 +58,11 @@ def main():
         print(f"Comida: {cliente[4]}")
         print(f"Cuenta total: ${cuenta_final}")
         print(f"Descuento aplicado: {descuento}%")
+
+        print("¿Desea liberar una máquina? (SI/NO)")
+        resp = input().upper()
+        if resp == "SI":
+            M = cc.liberarMaquina(M)
         print("------------------------------------------------------------")
         comprobante += 1
 
