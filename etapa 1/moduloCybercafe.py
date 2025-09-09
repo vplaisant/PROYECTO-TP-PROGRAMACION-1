@@ -73,14 +73,14 @@ def turno_validar(turno):
     return turno
 
 def ocuparMaquina(M):
-    pmaq = int(input("Ingrese fila: "))
+    pmaq = int(input("Ingrese fila (1-5): "))
     while pmaq < 1 or pmaq > 5:
         print("Fila no valida, ingrese fila entre 1 y 5: ")
         pmaq = int(input("Ingrese fila: "))
     maq = int(input("Ingrese maquina: "))
     while maq < 1 or maq > 5:
         print("Maquina no valida, ingrese maquina entre 1 y 5: ")
-        maq = int(input("Ingrese maquina: "))
+        maq = int(input("Ingrese maquina (1-5): "))
     while M[pmaq-1][maq-1] == 1:
         print("La máquina ya se encuentra ocupada. Seleccione otra máquina a ocupar.")
         pmaq = int(input("Ingrese fila: "))
