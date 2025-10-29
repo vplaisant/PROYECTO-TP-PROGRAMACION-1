@@ -66,28 +66,41 @@ def ordenar_servicios_por_gasto(ganancias_por_servicio, etiquetas=("PC","CONSOLA
         print(f"- {etq}: ${gasto:,.0f}".replace(",", "."))
     return matriz_ordenada
         
-def turno_validar(turno):
-    while turno not in ["MAÑANA", "TARDE", "NOCHE"]:
-        print("Turno inválido, ingrese MAÑANA, TARDE o NOCHE")
-        turno = input("Ingrese turno: ").upper()
+def ingresoTurno():
+    turnos = ["MAÑANA", "TARDE", "NOCHE"]
+    while True:
+        try:
+            turno = input("Ingrese turno: ").upper()
+            if turno not in turnos:
+                raise ValueError
+        except ValueError:
+            print("Turno inválido, ingrese MAÑANA, TARDE o NOCHE")
+        else:
+            break
     return turno
 
 def ocuparMaquina(M):
-    pmaq = int(input("Ingrese fila (1-5): "))
-    while pmaq < 1 or pmaq > 5:
-        print("Fila no valida, ingrese fila entre 1 y 5: ")
-        pmaq = int(input("Ingrese fila: "))
-    maq = int(input("Ingrese maquina: "))
-    while maq < 1 or maq > 5:
-        print("Maquina no valida, ingrese maquina entre 1 y 5: ")
-        maq = int(input("Ingrese maquina (1-5): "))
-    while M[pmaq-1][maq-1] == 1:
-        print("La máquina ya se encuentra ocupada. Seleccione otra máquina a ocupar.")
-        pmaq = int(input("Ingrese fila: "))
-        maq = int(input("Ingrese maquina: "))
-    M[pmaq-1][maq-1] = 1
+    while True:
+        try:
+            pmaq = int(input("Ingrese fila (1-5): "))
+            maq = int(input("Ingrese maquina (1-5): "))
+            if pmaq < 1 or pmaq > 5:
+                print("Fila no valida, ingrese fila entre 1 y 5")
+                return ocuparMaquina(M)
+            if maq < 1 or maq > 5:
+                print("Maquina no valida, ingrese maquina entre 1 y 5")
+                return ocuparMaquina(M)
+            if M[pmaq-1][maq-1] == 1:
+                print("La máquina ya se encuentra ocupada. Seleccione otra máquina a ocupar.")
+                return ocuparMaquina(M)
+        except ValueError:
+            print("Error - No valido")
+        else:
+            M[pmaq-1][maq-1] = 1
+            break
     return M
-        
+
+
 """def liberarMaquina(M):
     pmaq = int(input("Ingrese fila: "))
     maq = int(input("Ingrese maquina: "))
