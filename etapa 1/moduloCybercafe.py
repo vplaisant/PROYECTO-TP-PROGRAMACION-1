@@ -1,7 +1,14 @@
-def show_validar(show):
-    while show != "PC" and show != "CONSOLA":
-        print("Opcion no valida, ingrese PC o CONSOLA")
-        show = input("Ingrese con que quiere jugar hoy PC o CONSOLA: ").upper()
+def ingresoShow():
+    opciones = ["PC", "CONSOLA"]
+    while True:
+        try:
+            show = input("Ingrese con que quiere jugar hoy PC o CONSOLA: ").upper()
+            if show not in opciones:
+                raise ValueError
+        except ValueError:
+            print("Opcion no valida, ingrese PC o CONSOLA")
+        else:
+            break
     return show
 
 def tiempo_validar(tiempo):
