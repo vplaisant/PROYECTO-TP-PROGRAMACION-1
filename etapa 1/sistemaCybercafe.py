@@ -24,7 +24,7 @@ def main():
         cliente.append(nickname)
         turno = cc.ingresoTurno()
         show = input("Ingrese con que quiere jugar PC o CONSOLA: ").upper()
-        show = cc.show_validar(show)
+        show = cc.ingresoShow()
         cliente.append(show)
         print(f"Seleccione una máquina para {show}:")
         M = cc.ocuparMaquina(M_MAÑANA if turno == "MAÑANA" else M_TARDE if turno == "TARDE" else M_NOCHE)
