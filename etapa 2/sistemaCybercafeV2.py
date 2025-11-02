@@ -1,34 +1,6 @@
 import moduloCybercafeV2 as cc
 import random
 
-def escribir_bitacora(evento, detalle):
-    with open("bitacora.txt", "a", encoding="utf-8") as f:
-        f.write(f"{evento} - {detalle}\n")
-    print(f"[LOG] {evento} - {detalle}")
-
-def generar_archivos_entrada():
-    nombres = ["Lautaro", "Victoria", "Lucas", "Sofía", "Martín", "Carla", "Nicolás", "Florencia", "Ezequiel", "Agustina"]
-    nicks = ["Shadow", "Vortex", "Neo", "Pixel", "Ragnar", "Sky", "Mamba", "Turtle", "Ghost", "Zero"]
-    servicios = ["PC", "CONSOLA"]
-    turnos = ["MAÑANA", "TARDE", "NOCHE"]
-    comidas = ["SI", "NO"]
-
-    for n in range(1, 4):
-        fname = f"entrada{n}.txt"
-        with open(fname, "w", encoding="utf-8") as f:
-            f.write("Nombre,Nickname,Turno,Servicio,Horas,Comida,Combo\n")
-            for _ in range(5):
-                nombre = random.choice(nombres)
-                nickname = random.choice(nicks) + str(random.randint(1, 999))
-                turno = random.choice(turnos)
-                servicio = random.choice(servicios)
-                horas = random.randint(1, 3)
-                comida = random.choice(comidas)
-                combo = random.randint(1, 3) if comida == "SI" else 0
-                linea = f"{nombre},{nickname},{turno},{servicio},{horas},{comida},{combo}\n"
-                f.write(linea)
-        escribir_bitacora("ARCHIVO_ENTRADA_GENERADO", f"{fname} creado")
-
 def main():
     integrantes = ["Lautaro Giampaoli", "Victoria Eugenia Plaisant", "Navarro Lucas Sebastian"]
     print("Integrantes del grupo:", integrantes)
@@ -41,7 +13,7 @@ def main():
     M_TARDE = [[0]*5 for _ in range(5)]
     M_NOCHE = [[0]*5 for _ in range(5)]
 
-    generar_archivos_entrada()
+    cc.generar_archivos_entrada()
     comprobante = 1
     continuar = 0
     print("------------------------------------------------------------")
@@ -91,7 +63,7 @@ def main():
             f.write(f"Descuento aplicado: {int(descuento)}%\n")
             f.write("------------------------------------------------------------\n")
 
-        escribir_bitacora("FACTURA_MANUAL", f"{factura_nombre} | Servicio={show}, Turno={turno}, Total=${int(cuenta_final)}")
+        cc.escribir_bitacora("FACTURA_MANUAL", f"{factura_nombre} | Servicio={show}, Turno={turno}, Total=${int(cuenta_final)}")
 
         print(f"Factura generada: {factura_nombre}")
         comprobante += 1
@@ -104,7 +76,7 @@ def main():
     print("\n=== REPORTE FINAL ===")
     print("Total recaudado:", total_recaudado)
     cc.ordenar_servicios_por_gasto(ganancias_por_servicio)
-    escribir_bitacora("REPORTE_FINAL", f"Total=${int(total_recaudado)}")
+    cc.escribir_bitacora("REPORTE_FINAL", f"Total=${int(total_recaudado)}")
     recaudacion = {
         "Total": total_recaudado,
         "PC": ganancias_por_servicio[0],
@@ -116,7 +88,7 @@ def main():
     for clave, valor in recaudacion.items():
         print(f"{clave}: ${valor:,.0f}".replace(",", "."))
 
-    escribir_bitacora("RECAUDACION_TOTAL", str(recaudacion))
+    cc.escribir_bitacora("RECAUDACION_TOTAL", str(recaudacion))
 
 
 if __name__ == "__main__":
