@@ -5,7 +5,6 @@ def main():
     print("Integrantes del grupo:", integrantes)
 
     cibercafe = ["Botas", "Cibercafe Botas", "Av Rivadavia 4567", "011-12345678", "20-12345678-9"]
-    lista_horas = [1, 2, 3]
     lista_cafe = [1, 2, 3]
     ganancias_por_servicio = [0, 0, 0]
     lista_ganancias = []
@@ -18,20 +17,18 @@ def main():
     print("------------------------------------------------------------")
     while continuar != -1:
         cliente = []
-        nombre = input("Ingrese su nombre: ").title()
+        nombre = cc.ingresoNombre()
         cliente.append(nombre)
-        nickname = input("Ingrese su nickname: ")
+        nickname = cc.ingresoNick()
         cliente.append(nickname)
         turno = cc.ingresoTurno()
-        show = input("Ingrese con que quiere jugar PC o CONSOLA: ").upper()
         show = cc.ingresoShow()
         cliente.append(show)
         print(f"Seleccione una máquina para {show}:")
         M = cc.ocuparMaquina(M_MAÑANA if turno == "MAÑANA" else M_TARDE if turno == "TARDE" else M_NOCHE)
-        tiempo = cc.seleccionar_horas(lista_horas)
+        tiempo = cc.seleccionar_horas()
         cliente.append(tiempo)
-        desea_comida = input("Desea comida? SI o NO: ").upper()
-        desea_comida = cc.comida_validar(desea_comida)
+        desea_comida = cc.deseaComida()
         if desea_comida == "SI":
             comida, comida_precio = cc.seleccionar_cafeteria(lista_cafe)
         else:
