@@ -1,3 +1,5 @@
+import random
+
 def ingresoShow():
     opciones = ["PC", "CONSOLA"]
     while True:
@@ -138,3 +140,32 @@ def ocuparMaquina(M):
             M[pmaq-1][maq-1] = 1
             break
     return M
+
+def escribir_bitacora(evento, detalle):
+    with open("bitacora.txt", "a", encoding="utf-8") as f:
+        f.write(f"{evento} - {detalle}\n")
+    print(f"[LOG] {evento} - {detalle}")
+    
+def generar_archivos_entrada():
+    nombres = ["Lautaro", "Victoria", "Lucas", "Sofía", "Martín", "Carla", "Nicolás", "Florencia", "Ezequiel", "Agustina"]
+    nicks = ["Shadow", "Vortex", "Neo", "Pixel", "Ragnar", "Sky", "Mamba", "Turtle", "Ghost", "Zero"]
+    servicios = ["PC", "CONSOLA"]
+    turnos = ["MAÑANA", "TARDE", "NOCHE"]
+    comidas = ["SI", "NO"]
+
+    for n in range(1, 4):
+        fname = f"entrada{n}.csv"
+        with open(fname, "w", encoding="utf-8") as f:
+            f.write("Nombre,Nickname,Turno,Servicio,Horas,Comida,Combo\n")
+            for _ in range(5):
+                nombre = random.choice(nombres)
+                nickname = random.choice(nicks) + str(random.randint(1, 999))
+                turno = random.choice(turnos)
+                servicio = random.choice(servicios)
+                horas = random.randint(1, 3)
+                comida = random.choice(comidas)
+                combo = random.randint(1, 3) if comida == "SI" else 0
+                linea = f"{nombre},{nickname},{turno},{servicio},{horas},{comida},{combo}\n"
+                f.write(linea)
+        escribir_bitacora("ARCHIVO_ENTRADA_GENERADO", f"{fname} creado")
+
