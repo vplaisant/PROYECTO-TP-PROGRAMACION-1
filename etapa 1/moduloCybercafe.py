@@ -11,16 +11,40 @@ def ingresoShow():
             break
     return show
 
-def tiempo_validar(tiempo):
-    while tiempo < 1 or tiempo > 3:
-        print("Opcion no valida, ingrese de 1 a 3 horas")
-        tiempo = int(input("Ingrese cuantas horas quiere jugar de 1 a 3: "))
-    return tiempo
+def ingresoNombre():
+    while True:
+        try:
+            nombre = input("Ingrese su nombre: ").title()
+            if not all(c.isalpha() or c.isspace() for c in nombre):
+                raise ValueError
+        except ValueError:
+            print("Error: ingrese un nombre válido.")
+        else:
+            break
+    return nombre
 
-def comida_validar(comida):
-    while comida != "SI" and comida != "NO":
-        print("Opcion no valida, ingrese SI o NO")
-        comida = input("Desea comida? SI o NO: ").upper()
+def ingresoNick():
+    while True:
+        try:
+            nickname = input("Ingrese su nickname: ")
+            if " " in nickname:
+                raise ValueError
+        except ValueError:
+            print("Error: ingrese un nickname válido.")
+        else:
+            break
+    return nickname
+
+def deseaComida():
+    while True:
+        try:
+            comida = input("Desea comida? SI o NO: ").upper()
+            if comida != "SI" and comida != "NO":
+                raise ValueError
+        except ValueError:
+            print("Error: ingrese SI o NO.")
+        else:
+            break
     return comida
 
 def combo_validar(combo):
@@ -29,10 +53,18 @@ def combo_validar(combo):
         combo = int(input("Ingrese el combo que desea: 1, 2 o 3: "))
     return combo
 
-def seleccionar_horas(lista_horas):
+def seleccionar_horas():
+    lista_horas = [1, 2, 3]
     print("Horas disponibles:", lista_horas)
-    horas = int(input("Seleccione la cantidad de horas (1-3): "))
-    horas = tiempo_validar(horas)
+    while True:
+        try:
+            horas = int(input("Seleccione la cantidad de horas (1-3): "))
+            if horas not in lista_horas:
+                raise ValueError
+        except ValueError:
+            print("Error. Ingrese la cantidad de horas entre 1 y 3.")
+        else:
+            break
     return horas
 
 def seleccionar_cafeteria(lista_cafe):
